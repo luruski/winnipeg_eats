@@ -1,5 +1,6 @@
 <% content_for :title, @restaurant.name %>
 
+<h1><%= @restaurant.name %></h1>
 
 <%# feature 5.2 - conditional, some restaurants have no address in the OSM data %>
 <% if @restaurant.address.strip == "" %>
@@ -36,7 +37,7 @@
 <% @restaurant.reviews.each do |review| %>
   <div class="card mb-2">
     <div class="card-body">
-      <strong><%= review.author %></strong> rated it <%= review.rating %>/5
+      <strong><%= review.author %></strong> <%= "★" * review.rating %><%= "☆" * (5 - review.rating) %>
       <p class="mb-0"><%= review.body %></p>
     </div>
   </div>
