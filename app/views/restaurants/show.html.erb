@@ -1,4 +1,5 @@
-<h1><%= @restaurant.name %></h1>
+<% content_for :title, @restaurant.name %>
+
 
 <%# feature 5.2 - conditional, some restaurants have no address in the OSM data %>
 <% if @restaurant.address.strip == "" %>
