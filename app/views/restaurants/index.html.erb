@@ -1,5 +1,15 @@
 <h1>Restaurants</h1>
-
+<%= form_with url: restaurants_path, method: :get, class: "row g-2 mb-4" do |form| %>
+  <div class="col-md-5">
+    <%= form.text_field :search, value: params[:search], placeholder: "Search restaurants by name", class: "form-control" %>
+  </div>
+  <div class="col-md-4">
+    <%= form.select :cuisine_id, options_from_collection_for_select(Cuisine.order(:name), :id, :name, params[:cuisine_id]), { include_blank: "All cuisines" }, { class: "form-select" } %>
+  </div>
+  <div class="col-md-3">
+    <%= form.submit "Search", class: "btn btn-primary" %>
+  </div>
+<% end %>
 <p><%= @restaurants.count %> restaurants in Winnipeg</p>
 
 <div class="row">
