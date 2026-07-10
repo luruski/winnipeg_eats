@@ -1,4 +1,5 @@
 <h1>Restaurants</h1>
+
 <%= form_with url: restaurants_path, method: :get, class: "row g-2 mb-4" do |form| %>
   <div class="col-md-5">
     <%= form.text_field :search, value: params[:search], placeholder: "Search restaurants by name", class: "form-control" %>
@@ -10,7 +11,8 @@
     <%= form.submit "Search", class: "btn btn-primary" %>
   </div>
 <% end %>
-<p><%= @restaurants.count %> restaurants in Winnipeg</p>
+
+<p><%= @restaurants.total_count %> restaurants in Winnipeg</p>
 
 <div class="row">
   <% @restaurants.each do |restaurant| %>
@@ -28,3 +30,5 @@
     </div>
   <% end %>
 </div>
+
+<%= paginate @restaurants %>

@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
   def index
-    @restaurants = Restaurant.order(:name)
+    @restaurants = Restaurant.order(:name).page(params[:page]).per(24)
 
     # simple text search on the name (feature 4.1)
     if params[:search].present?
