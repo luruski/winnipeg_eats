@@ -14,6 +14,23 @@
   <% end %>
 </p>
 
+<%# feature 3.6 - map of where the restaurant is using leaflet %>
+<h4>Location</h4>
+<div id="map" style="height: 300px;" class="mb-4 rounded"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  var map = L.map("map").setView([<%= @restaurant.lat %>, <%= @restaurant.lng %>], 16);
+
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; OpenStreetMap contributors"
+  }).addTo(map);
+
+  L.marker([<%= @restaurant.lat %>, <%= @restaurant.lng %>]).addTo(map)
+    .bindPopup("<%= @restaurant.name %>");
+</script>
+
 <h4>Reviews</h4>
 <% @restaurant.reviews.each do |review| %>
   <div class="card mb-2">
