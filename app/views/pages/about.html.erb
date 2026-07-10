@@ -2,7 +2,13 @@
 
 <p>My project uses three data sources: the OpenStreetMap Overpass API, TheMealDB API, and the Faker gem.</p>
 
-<%# ...rest of the 1.1 paragraphs, each in its own <p> tag... %>
+<p>The first source is OpenStreetMap, which I query through the Overpass API. OSM is a free map database that anyone can contribute to, and businesses on the map get tagged with information. My query asks for every node inside the Winnipeg city boundary that is tagged as a restaurant and has a cuisine tag. The API returns JSON where each restaurant has a name, latitude, longitude, address fields, and a cuisine tag like "italian" or "chinese". Some restaurants have more than one cuisine separated by semicolons, which is part of why I needed a many-to-many relationship instead of just putting a cuisine column on the restaurants table.</p>
+
+<p>The second source is TheMealDB, a free recipe API. I use two of its endpoints. The filter endpoint returns a list of meals for a given area (which is what TheMealDB calls a cuisine, like Italian or Chinese), and the lookup endpoint returns the full details for one meal, including cooking instructions, a photo, and up to 20 ingredients with their measurements.</p>
+
+<p>The third source is the Faker gem, which I use to generate fake reviews (a reviewer name, a 1 to 5 rating, and review text) for every restaurant.</p>
+
+<p>How the datasets connect: the cuisine is the link between the two APIs. A restaurant from OSM tagged "italian" and a recipe from TheMealDB in the "Italian" area both point at the same row in my cuisines table. So on an Italian restaurant's page I can show Italian recipes you could try making at home, and from a cuisine page you can get to both its restaurants and its meals.</p>
 
 <h4>Database design</h4>
-<%= image_tag "winnipeg_eats_erd.png", class: "img-fluid", alt: "ERD diagram of the database" %>
+<%= image_tag "winnipeg_eats_erd.png", class: "img-fluid", alt: "ERD diagram of the winnipeg eats database" %>
