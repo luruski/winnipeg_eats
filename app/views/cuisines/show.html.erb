@@ -1,5 +1,7 @@
 <% content_for :title, @cuisine.name %>
 
+<h1><%= @cuisine.name %></h1>
+
 <h4>Restaurants with this cuisine</h4>
 <ul>
   <% @cuisine.restaurants.each do |restaurant| %>

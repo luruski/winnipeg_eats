@@ -1,4 +1,6 @@
-<% content_for :title, @cuisine.name %>
+<% content_for :title, @meal.name %>
+
+<h1><%= @meal.name %></h1>
 <p>Cuisine: <%= link_to @meal.cuisine.name, cuisine_path(@meal.cuisine) %></p>
 
 <div class="row">
