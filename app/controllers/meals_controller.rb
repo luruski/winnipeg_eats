@@ -1,6 +1,6 @@
 class MealsController < ApplicationController
   def index
-    @meals = Meal.order(:name)
+    @meals = Meal.order(:name).page(params[:page]).per(24)
   end
 
   def show
