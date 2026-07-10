@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+T# Winnipeg Eats
 
-Things you may want to cover:
+Rails intro project for my web dev program. Browse real Winnipeg restaurants
+pulled from OpenStreetMap, see what cuisines they serve, and find recipes
+from TheMealDB you could try making at home.
 
-* Ruby version
+## Data sources
+- OpenStreetMap Overpass API (restaurants with locations)
+- TheMealDB API (recipes and ingredients, two endpoints)
+- Faker gem (fake reviews)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Setup
+bundle install
+rails db:migrate
+rails db:seed
+rails s
