@@ -1,0 +1,15 @@
+<h1>Meals</h1>
+
+<div class="row">
+  <% @meals.each do |meal| %>
+    <div class="col-md-3 mb-3">
+      <div class="card h-100">
+        <img src="<%= meal.thumbnail %>" class="card-img-top" alt="photo of <%= meal.name %>">
+        <div class="card-body">
+          <%= link_to meal.name, meal_path(meal) %>
+          <p class="card-text"><small><%= meal.cuisine.name %></small></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

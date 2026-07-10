@@ -1,0 +1,27 @@
+<h1><%= @cuisine.name %></h1>
+
+<h4>Restaurants with this cuisine</h4>
+<ul>
+  <% @cuisine.restaurants.each do |restaurant| %>
+    <li><%= link_to restaurant.name, restaurant_path(restaurant) %></li>
+  <% end %>
+</ul>
+
+<h4>Recipes to try at home</h4>
+<%# not every cuisine matched a themealdb area so some have no meals %>
+<% if @cuisine.meals.count == 0 %>
+  <p class="text-muted">No recipes found for this cuisine.</p>
+<% else %>
+  <div class="row">
+    <% @cuisine.meals.each do |meal| %>
+      <div class="col-md-3 mb-3">
+        <div class="card h-100">
+          <img src="<%= meal.thumbnail %>" class="card-img-top" alt="photo of <%= meal.name %>">
+          <div class="card-body">
+            <%= link_to meal.name, meal_path(meal) %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

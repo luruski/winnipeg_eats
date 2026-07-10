@@ -1,0 +1,9 @@
+class CuisinesController < ApplicationController
+  def index
+    @cuisines = Cuisine.order(:name)
+  end
+
+  def show
+    @cuisine = Cuisine.find(params[:id])
+  end
+end

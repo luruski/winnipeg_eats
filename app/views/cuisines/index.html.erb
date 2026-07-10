@@ -1,0 +1,10 @@
+<h1>Cuisines</h1>
+
+<div class="row">
+  <% @cuisines.each do |cuisine| %>
+    <div class="col-md-3 mb-2">
+      <%= link_to cuisine.name, cuisine_path(cuisine) %>
+      (<%= cuisine.restaurants.count %> restaurants)
+    </div>
+  <% end %>
+</div>
