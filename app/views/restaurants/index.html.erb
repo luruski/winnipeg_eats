@@ -1,0 +1,20 @@
+<h1>Restaurants</h1>
+
+<p><%= @restaurants.count %> restaurants in Winnipeg</p>
+
+<div class="row">
+  <% @restaurants.each do |restaurant| %>
+    <div class="col-md-4 mb-3">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to restaurant.name, restaurant_path(restaurant) %></h5>
+          <p class="card-text">
+            <% restaurant.cuisines.each do |cuisine| %>
+              <span class="badge bg-secondary"><%= cuisine.name %></span>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

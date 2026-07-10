@@ -1,0 +1,25 @@
+<h1><%= @restaurant.name %></h1>
+
+<%# feature 5.2 - conditional, some restaurants have no address in the OSM data %>
+<% if @restaurant.address.strip == "" %>
+  <p class="text-muted">No address available</p>
+<% else %>
+  <p><%= @restaurant.address %>, Winnipeg</p>
+<% end %>
+
+<h4>Cuisines</h4>
+<p>
+  <% @restaurant.cuisines.each do |cuisine| %>
+    <%= link_to cuisine.name, cuisine_path(cuisine), class: "badge bg-secondary text-decoration-none" %>
+  <% end %>
+</p>
+
+<h4>Reviews</h4>
+<% @restaurant.reviews.each do |review| %>
+  <div class="card mb-2">
+    <div class="card-body">
+      <strong><%= review.author %></strong> rated it <%= review.rating %>/5
+      <p class="mb-0"><%= review.body %></p>
+    </div>
+  </div>
+<% end %>
