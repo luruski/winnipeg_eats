@@ -14,6 +14,10 @@
 
 <p><%= @restaurants.total_count %> restaurants in Winnipeg</p>
 
+<% if @restaurants.count == 0 %>
+  <p class="alert alert-warning">No restaurants matched your search. Try a different name or cuisine.</p>
+<% end %>
+
 <div class="row">
   <% @restaurants.each do |restaurant| %>
     <div class="col-md-4 mb-3">
@@ -26,9 +30,3 @@
             <% end %>
           </p>
         </div>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-<%= paginate @restaurants %>
